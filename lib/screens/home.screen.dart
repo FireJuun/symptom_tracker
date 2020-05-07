@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:symptom_tracker/screens/screens.dart';
+import 'package:symptom_tracker/shared/action_button.dart';
 import 'package:symptom_tracker/shared/app_bar.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -28,22 +29,18 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          _buildActionButton(
+          SharedActionButton(
             title: 'Dashboard',
             onPressed: () => Get.to(DashboardScreen()),
           ),
-          _buildActionButton(
+          SharedActionButton(
             title: 'Check-in',
             onPressed: () => Get.to(CheckinScreen()),
           ),
-          _buildActionButton(title: 'FHIR'),
+          SharedActionButton(title: 'FHIR'),
           Text('Obligatory FHIR pun'),
         ],
       ),
     );
-  }
-
-  Widget _buildActionButton({@required String title, void Function() onPressed}) {
-    return RaisedButton(child: Text(title), onPressed: onPressed);
   }
 }
