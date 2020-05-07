@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:symptom_tracker/screens/screens.dart';
+import 'package:symptom_tracker/shared/app_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: Text('Home Screen'),
-      ),
+      appBar: SharedAppBar(title: 'Hello AMIA'),
       body: SafeArea(
         child: Center(
           child: Text('Home Screen'),
