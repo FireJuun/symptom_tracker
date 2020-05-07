@@ -14,7 +14,14 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Center(child: Text('barebones')),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Home Screen'),
+        ),
+        body: Center(
+          child: Text('Home Screen'),
+        ),
+      ),
     );
   }
 }
