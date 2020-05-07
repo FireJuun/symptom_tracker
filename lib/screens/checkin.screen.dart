@@ -18,7 +18,6 @@ class CheckinScreen extends StatelessWidget {
           child: Text('Checkin Screen'),
         ),
       ),
-      // floatingActionButton: FloatingActionButton(onPressed: () => Get.to(DashboardScreen())),
     );
   }
 }

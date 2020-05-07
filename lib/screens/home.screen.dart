@@ -9,9 +9,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: SharedAppBar(title: 'Hello AMIA'),
       body: SafeArea(
-        child: Center(
-          child: Text('Home Screen'),
-        ),
+        child: _buildBody(),
       ),
       drawer: Drawer(
         child: RaisedButton(
@@ -22,7 +20,30 @@ class HomeScreen extends StatelessWidget {
           },
         ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () => Get.to(DashboardScreen())),
     );
+  }
+
+  Widget _buildBody() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          _buildActionButton(
+            title: 'Dashboard',
+            onPressed: () => Get.to(DashboardScreen()),
+          ),
+          _buildActionButton(
+            title: 'Check-in',
+            onPressed: () => Get.to(CheckinScreen()),
+          ),
+          _buildActionButton(title: 'FHIR'),
+          Text('Obligatory FHIR pun'),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildActionButton({@required String title, void Function() onPressed}) {
+    return RaisedButton(child: Text(title), onPressed: onPressed);
   }
 }
