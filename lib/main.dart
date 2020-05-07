@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:symptom_tracker/screens/screens.dart';
 import 'package:symptom_tracker/theme.dart';
 
 void main() {
@@ -13,16 +14,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: appTheme(),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Home Screen'),
-        ),
-        body: SafeArea(
-          child: Center(
-            child: Text('Home Screen'),
-          ),
-        ),
-      ),
+      home: HomeScreen(),
     );
   }
 }
