@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:symptom_tracker/screens/screens.dart';
+import 'package:symptom_tracker/services/services.dart';
 import 'package:symptom_tracker/shared/action_button.dart';
 import 'package:symptom_tracker/shared/shared.dart';
 
@@ -25,7 +26,7 @@ class CheckinScreen extends StatelessWidget {
           SizedBox(height: 48),
           _buildHeader(),
           SizedBox(height: 24),
-          Text('text'),
+          _buildSymptomList(),
           SizedBox(height: 24),
           SharedActionButton(
             title: 'Submit',
@@ -53,6 +54,49 @@ class CheckinScreen extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
       ],
+    );
+  }
+
+  Widget _buildSymptomList() {
+    return GetBuilder<SymptomService>(
+      init: SymptomService(),
+      builder: (data) => Expanded(
+        child: GridView(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: 2),
+          children: [...data.symptomList.map((item) => _listItem(item))],
+        ),
+      ),
+    );
+  }
+
+  Widget _listItem(Symptom item) {
+    return GestureDetector(
+      onTap: () => SymptomService.to.toggleChecked(item),
+      child: Container(
+        margin: const EdgeInsets.all(8),
+        padding: const EdgeInsets.only(left: 8),
+        decoration: BoxDecoration(
+            border: Border.all(color: Get.theme.unselectedWidgetColor), borderRadius: BorderRadius.circular(16)),
+        child: Row(
+          children: [
+            Icon(
+              item.icon,
+              color: (item.isChecked) ? Get.theme.primaryColor : Get.theme.disabledColor,
+            ),
+            Expanded(
+              child: Text(item.name,
+                  textAlign: TextAlign.center,
+                  style: Get.theme.textTheme.subtitle2
+                      .apply(color: (item.isChecked) ? Get.theme.primaryColor : Get.theme.disabledColor)),
+            ),
+            Checkbox(
+              activeColor: Get.theme.primaryColor,
+              value: item.isChecked,
+              onChanged: (value) => SymptomService.to.toggleChecked(item),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
