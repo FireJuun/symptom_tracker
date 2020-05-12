@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:symptom_tracker/shared/shared.dart';
 
@@ -16,6 +17,21 @@ class FhirScreen extends StatelessWidget {
 
   Widget _buildBody() {
     return Center(
+      child: Column(
+        children: <Widget>[
+          _firebaseStream(),
+          SizedBox(height: 24),
+          Text('Obligatory FHIR Puns:', style: Get.theme.textTheme.headline4),
+          SizedBox(height: 24),
+          _sandbox(),
+        ],
+      ),
+    );
+  }
+
+  Widget _firebaseStream() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 24),
       child: StreamBuilder(
         stream: Firestore.instance.collection('collection').document('document').snapshots(),
         builder: (context, snapshot) {
@@ -27,6 +43,21 @@ class FhirScreen extends StatelessWidget {
           Map<String, dynamic> documentFields = snapshot.data.data;
           return Text(documentFields['field'], textAlign: TextAlign.center);
         },
+      ),
+    );
+  }
+
+  Widget _sandbox() {
+    return Expanded(
+      child: ListView(
+        children: <Widget>[
+          Text('text', textAlign: TextAlign.center),
+          Text('text', textAlign: TextAlign.center),
+          Text('text', textAlign: TextAlign.center),
+          Text('text', textAlign: TextAlign.center),
+          Text('text', textAlign: TextAlign.center),
+          Text('text', textAlign: TextAlign.center),
+        ],
       ),
     );
   }
