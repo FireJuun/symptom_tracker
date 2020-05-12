@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "747077780555",
+    "firebase_url": "https://symptom-tracker1.firebaseio.com",
+    "project_id": "symptom-tracker1",
+    "storage_bucket": "symptom-tracker1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:747077780555:android:32ac38f7e9f319366579ce",
+        "android_client_info": {
+          "package_name": "com.firejuun.symptom_tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "747077780555-mvpjfbql7mpbup48p85k0pqk1jujire1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.firejuun.symptom_tracker",
+            "certificate_hash": "706fee551d06f90f67673719354a56cbf78296b3"
+          }
+        },
+        {
+          "client_id": "747077780555-s40ds4u5718tegokl9j7lk4lbqt57rd5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAw4PduFqxFUAQvGcfL2_ognDsdBGHa7mc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "747077780555-s40ds4u5718tegokl9j7lk4lbqt57rd5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "747077780555-6ji78ufk74i8vibhl3infaqktfa9nfbh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.firejuun.symptomTracker"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

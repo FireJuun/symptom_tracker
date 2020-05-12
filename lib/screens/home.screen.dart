@@ -4,6 +4,8 @@ import 'package:symptom_tracker/screens/screens.dart';
 import 'package:symptom_tracker/shared/action_button.dart';
 import 'package:symptom_tracker/shared/app_bar.dart';
 
+import 'screens.dart';
+
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,10 @@ class HomeScreen extends StatelessWidget {
             title: 'Check-in',
             onPressed: () => Get.to(CheckinScreen()),
           ),
-          SharedActionButton(title: 'FHIR'),
+          SharedActionButton(
+            title: 'FHIR',
+            onPressed: () => Get.to(FhirScreen()),
+          ),
           Text('Obligatory FHIR pun'),
         ],
       ),
