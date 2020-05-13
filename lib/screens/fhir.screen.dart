@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:symptom_tracker/services/services.dart';
 
 import 'package:symptom_tracker/shared/shared.dart';
 
@@ -32,17 +33,20 @@ class FhirScreen extends StatelessWidget {
   Widget _firebaseStream() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 24),
-      child: StreamBuilder(
-        stream: Firestore.instance.collection('collection').document('document').snapshots(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return CircularProgressIndicator();
-          }
+      child: GetBuilder<FirebaseService>(
+        init: FirebaseService(),
+        builder: (fbService) => StreamBuilder(
+          stream: fbService.fbHelloStream,
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return CircularProgressIndicator();
+            }
 
-          // find the field named 'field', return this
-          Map<String, dynamic> documentFields = snapshot.data.data;
-          return Text(documentFields['field'], textAlign: TextAlign.center);
-        },
+            // find the field named 'field', return this
+            Map<String, dynamic> documentFields = snapshot.data.data;
+            return Text(documentFields['field'], textAlign: TextAlign.center);
+          },
+        ),
       ),
     );
   }
