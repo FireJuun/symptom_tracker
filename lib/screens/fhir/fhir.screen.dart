@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:symptom_tracker/screens/fhir/fhir.dart';
 import 'package:symptom_tracker/screens/fhir/firebase.dart';
 import 'package:symptom_tracker/screens/fhir/sandbox.dart';
+import 'package:symptom_tracker/screens/screens.dart';
 import 'package:symptom_tracker/services/services.dart';
 
 import 'package:symptom_tracker/shared/shared.dart';
@@ -17,6 +18,9 @@ class FhirScreen extends StatelessWidget {
       child: Scaffold(
         appBar: SharedAppBar(
           title: 'FHIR',
+          actions: [
+            IconButton(icon: Icon(Icons.close), onPressed: () => Get.offAll(HomeScreen())),
+          ],
         ),
         body: _buildBody(),
         bottomNavigationBar: TabBar(tabs: [
@@ -33,15 +37,16 @@ class FhirScreen extends StatelessWidget {
       child: Column(
         children: <Widget>[
           _firebaseStream(),
-          SizedBox(height: 24),
           Expanded(
             child: Container(
               color: Get.theme.unselectedWidgetColor,
-              child: TabBarView(children: [
-                SandboxView(),
-                FirebaseView(),
-                FhirView(),
-              ]),
+              child: TabBarView(
+                children: [
+                  SandboxView(),
+                  FirebaseView(),
+                  FhirView(),
+                ],
+              ),
             ),
           ),
         ],
@@ -55,7 +60,7 @@ class FhirScreen extends StatelessWidget {
       child: GetBuilder<FirebaseService>(
         init: FirebaseService(),
         builder: (fbService) => StreamBuilder(
-          stream: fbService.fbHelloStream,
+          stream: fbService.fbStreamHello,
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
               return CircularProgressIndicator();

@@ -6,8 +6,10 @@ class SandboxView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Text('Obligatory FHIR Puns:', style: Get.theme.textTheme.headline4),
-        SizedBox(height: 24),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 24),
+          child: Text('Obligatory FHIR Puns:', style: Get.theme.textTheme.headline4),
+        ),
         _sandbox(),
       ],
     );
