@@ -18,6 +18,13 @@ ThemeData appTheme() {
     appBarTheme: _buildAppBarTheme(textTheme),
     iconTheme: iconTheme,
     primaryIconTheme: iconTheme.copyWith(color: _AppColors.primary),
+    tabBarTheme: TabBarTheme(
+      labelStyle: textTheme.subtitle1.copyWith(color: _AppColors.primary),
+      labelPadding: EdgeInsets.symmetric(vertical: 12),
+      indicator:
+          BoxDecoration(color: _AppColors.primary, borderRadius: BorderRadius.vertical(top: Radius.circular(16))),
+      unselectedLabelColor: _AppColors.disabled,
+    ),
 
     // Misc
     buttonTheme: ButtonThemeData(
@@ -45,9 +52,7 @@ class _AppColors {
 
 /// ******* Custom Themes *******
 AppBarTheme _buildAppBarTheme(TextTheme textTheme) {
-  return AppBarTheme(
-    textTheme: textTheme.apply(displayColor: _AppColors.primary),
-  );
+  return AppBarTheme(textTheme: textTheme.apply(displayColor: _AppColors.primary), brightness: Brightness.light);
 }
 
 IconThemeData _buildIconTheme() {

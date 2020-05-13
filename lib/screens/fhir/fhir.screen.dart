@@ -1,6 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
+import 'package:symptom_tracker/screens/fhir/fhir.dart';
+import 'package:symptom_tracker/screens/fhir/firebase.dart';
+import 'package:symptom_tracker/screens/fhir/sandbox.dart';
 import 'package:symptom_tracker/services/services.dart';
 
 import 'package:symptom_tracker/shared/shared.dart';
@@ -8,11 +12,19 @@ import 'package:symptom_tracker/shared/shared.dart';
 class FhirScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: SharedAppBar(
-        title: 'FHIR',
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: SharedAppBar(
+          title: 'FHIR',
+        ),
+        body: _buildBody(),
+        bottomNavigationBar: TabBar(tabs: [
+          Tab(icon: Icon(FlutterIcons.md_bonfire_ion), text: 'Sandbox'),
+          Tab(icon: Icon(FlutterIcons.firebase_mco), text: 'Firebase'),
+          Tab(icon: Icon(FlutterIcons.fire_mco), text: 'FHIR'),
+        ]),
       ),
-      body: _buildBody(),
     );
   }
 
@@ -22,9 +34,16 @@ class FhirScreen extends StatelessWidget {
         children: <Widget>[
           _firebaseStream(),
           SizedBox(height: 24),
-          Text('Obligatory FHIR Puns:', style: Get.theme.textTheme.headline4),
-          SizedBox(height: 24),
-          _sandbox(),
+          Expanded(
+            child: Container(
+              color: Get.theme.unselectedWidgetColor,
+              child: TabBarView(children: [
+                SandboxView(),
+                FirebaseView(),
+                FhirView(),
+              ]),
+            ),
+          ),
         ],
       ),
     );
@@ -47,21 +66,6 @@ class FhirScreen extends StatelessWidget {
             return Text(documentFields['field'], textAlign: TextAlign.center);
           },
         ),
-      ),
-    );
-  }
-
-  Widget _sandbox() {
-    return Expanded(
-      child: ListView(
-        children: <Widget>[
-          Text('text', textAlign: TextAlign.center),
-          Text('text', textAlign: TextAlign.center),
-          Text('text', textAlign: TextAlign.center),
-          Text('text', textAlign: TextAlign.center),
-          Text('text', textAlign: TextAlign.center),
-          Text('text', textAlign: TextAlign.center),
-        ],
       ),
     );
   }
