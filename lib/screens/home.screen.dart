@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:symptom_tracker/screens/screens.dart';
-import 'package:symptom_tracker/shared/action_button.dart';
-import 'package:symptom_tracker/shared/app_bar.dart';
+import 'package:symptom_tracker/shared/shared.dart';
 
 import 'screens.dart';
 

@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
 import 'package:symptom_tracker/services/services.dart';
