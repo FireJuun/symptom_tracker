@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:symptom_tracker/screens/screens.dart';
-import 'package:symptom_tracker/shared/action_button.dart';
-import 'package:symptom_tracker/shared/app_bar.dart';
+import 'package:symptom_tracker/shared/shared.dart';
+
+import 'screens.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -37,7 +38,10 @@ class HomeScreen extends StatelessWidget {
             title: 'Check-in',
             onPressed: () => Get.to(CheckinScreen()),
           ),
-          SharedActionButton(title: 'FHIR'),
+          SharedActionButton(
+            title: 'FHIR',
+            onPressed: () => Get.to(FhirScreen()),
+          ),
           Text('Obligatory FHIR pun'),
         ],
       ),

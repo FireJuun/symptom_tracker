@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:symptom_tracker/screens/screens.dart';
 import 'package:symptom_tracker/services/services.dart';
-import 'package:symptom_tracker/shared/action_button.dart';
 import 'package:symptom_tracker/shared/shared.dart';
 
 class CheckinScreen extends StatelessWidget {
@@ -84,10 +83,13 @@ class CheckinScreen extends StatelessWidget {
               color: (item.isChecked) ? Get.theme.primaryColor : Get.theme.disabledColor,
             ),
             Expanded(
-              child: Text(item.name,
-                  textAlign: TextAlign.center,
-                  style: Get.theme.textTheme.subtitle2
-                      .apply(color: (item.isChecked) ? Get.theme.primaryColor : Get.theme.disabledColor)),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4),
+                child: Text(item.name,
+                    textAlign: TextAlign.center,
+                    style: Get.theme.textTheme.subtitle2
+                        .apply(color: (item.isChecked) ? Get.theme.primaryColor : Get.theme.disabledColor)),
+              ),
             ),
             Checkbox(
               activeColor: Get.theme.primaryColor,
