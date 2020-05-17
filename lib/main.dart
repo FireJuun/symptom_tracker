@@ -24,6 +24,15 @@ class MyApp extends StatelessWidget {
             child: Text('Home Screen'),
           ),
         ),
+        drawer: Drawer(
+          child: RaisedButton(
+            child: Text('Do Not Click Here!'),
+            onPressed: () {
+              Get.snackbar('Reverse Psychology', 'Worked!');
+              Get.back();
+            },
+          ),
+        ),
       ),
     );
   }
