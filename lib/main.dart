@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:symptom_tracker/theme.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,7 +11,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
-      theme: appTheme(),
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
       home: Scaffold(
         appBar: AppBar(
           title: Text('Home Screen'),
@@ -20,6 +22,15 @@ class MyApp extends StatelessWidget {
         body: SafeArea(
           child: Center(
             child: Text('Home Screen'),
+          ),
+        ),
+        drawer: Drawer(
+          child: RaisedButton(
+            child: Text('Do Not Click Here!'),
+            onPressed: () {
+              Get.snackbar('Reverse Psychology', 'Worked!');
+              Get.back();
+            },
           ),
         ),
       ),
