@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:fhir_r4/fhir_r4.dart';
 import 'package:http/http.dart' as http;
 
-class FhirService {
+class AidboxService {
   Future<List<Quantity>> getResponse() async {
     final String server = 'https://flutterfhir.aidbox.app/';
     final Map<String, String> headers = {'Content-type': 'application/json'};
