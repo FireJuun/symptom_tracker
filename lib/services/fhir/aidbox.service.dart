@@ -3,16 +3,15 @@ import 'dart:convert';
 import 'package:fhir_r4/fhir_r4.dart';
 import 'package:http/http.dart' as http;
 
-class FhirService {
+class AidboxService {
   Future<List<Quantity>> getResponse() async {
     final String server = 'https://flutterfhir.aidbox.app/';
     final Map<String, String> headers = {'Content-type': 'application/json'};
     final String identifier = 'test-client';
     final String secret = 'verysecret';
     final String grantType = 'client_credentials';
-    var response1 = await http.post(
-        '$server/auth/token?client_id=$identifier&grant_type=$grantType&client_secret=$secret',
-        headers: headers);
+    var response1 = await http
+        .post('$server/auth/token?client_id=$identifier&grant_type=$grantType&client_secret=$secret', headers: headers);
     if (response1.statusCode == 200) {
       var parsedbody = json.decode(response1.body);
 
@@ -20,9 +19,7 @@ class FhirService {
       var token = parsedbody['token_type'] + ' ' + parsedbody['access_token'];
       headers.putIfAbsent('Authorization', () => token);
     }
-    var response2 = await http.get(
-        '$server/fhir/Observation?patient=test123&category=vital-signs',
-        headers: headers);
+    var response2 = await http.get('$server/fhir/Observation?patient=test123&category=vital-signs', headers: headers);
     Bundle vitalsBundle = Bundle.fromJson(json.decode(response2.body));
     print('vitalsBundle: $vitalsBundle');
 
@@ -68,21 +65,5 @@ class FhirService {
       }
     }
     return data;
-  }
-
-  Future<void> createPatient(String first, String last) async {
-    var newPatient = Patient(
-      name: [
-        HumanName(
-          given: [first],
-          family: last,
-        ),
-      ],
-    );
-
-    final String server = 'http://hapi.fhir.org/baseR4/';
-    final Map<String, String> headers = {'Content-type': 'application/json'};
-    await http.post('$server/Patient?_format=json&_pretty=true',
-        headers: headers, body: jsonEncode(newPatient.toJson()));
   }
 }
