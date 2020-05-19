@@ -1,12 +1,12 @@
 # symptom_tracker
 
-A Flutter project for the AMIA CIC Conference.
+This Flutter project was designed for the AMIA 2020 Clinical Informatics Conference. A "speed code" demo of our livecoding workshop is [available on YouTube][speed_code].
 
 <img src="symptom_tracker_demo.gif" align="right"  width="320">
 
 ## Getting Started
 
-Follow these steps to [install Flutter][install_flutter] and [install Dart][install_dart]. Due to breaking changes, it is preferable to have at least Flutter 1.17.1 and Dart 2.8.2 installed.
+Follow these steps to [install Flutter][install_flutter] and to [install Dart][install_dart]. Due to breaking changes, it is preferable to have at least Flutter 1.17 and Dart 2.8 installed.
 
 If you plan to debug on multiple devices simultaneously, follow [these steps][multi_device].
 
@@ -55,6 +55,7 @@ Please feel free to fork this project and Dokotela's [FHIR package][fhir_package
 
 <!-- Links -->
 
+[speed_code]: https://bit.ly/speed_code
 [install_flutter]: https://flutter.dev/docs/get-started/install
 [install_dart]: https://dart.dev/get-dart
 [multi_device]: https://github.com/flutter/flutter/wiki/Multi-device-debugging-in-VS-Code
