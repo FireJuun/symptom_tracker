@@ -18,7 +18,9 @@ class FhirScreen extends StatelessWidget {
         appBar: SharedAppBar(
           title: 'FHIR',
           actions: [
-            IconButton(icon: Icon(Icons.close), onPressed: () => Get.offAll(HomeScreen())),
+            IconButton(
+                icon: Icon(Icons.close),
+                onPressed: () => Get.offAll(HomeScreen())),
           ],
         ),
         body: _buildBody(),
