@@ -2,7 +2,7 @@
 
 A Flutter project for the AMIA CIC Conference.
 
-<img src="symptom_tracker_demo.gif" align="right"  width="240">
+<img src="symptom_tracker_demo.gif" align="right"  width="320">
 
 ## Getting Started
 
